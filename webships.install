@@ -1,0 +1,36 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions for the Webships installation profile.
+ */
+
+use Drupal\user\UserInterface;
+
+/**
+ * Implements hook_install().
+ *
+ * Perform actions to set up the site for this profile.
+ *
+ * @see system_install()
+ */
+function webships_install() {
+  // Set front page to "node".
+  \Drupal::configFactory()->getEditable('system.site')->set('page.front', '/node')->save(TRUE);
+
+  // Restrict user registration to admin role creation.
+  \Drupal::configFactory()->getEditable('user.settings')->set('register', UserInterface::REGISTER_ADMINISTRATORS_ONLY)->save(TRUE);
+
+  // We install some menu links, so we have to rebuild the router, to ensure the
+  // menu links are valid.
+  \Drupal::service('router.builder')->rebuildIfNeeded();
+
+  // Enable the admin theme.
+  \Drupal::configFactory()->getEditable('node.settings')->set('use_admin_theme', TRUE)->save(TRUE);
+
+  // We install some menu links, so we have to rebuild the router, to ensure the
+  // menu links are valid.
+  \Drupal::service('router.builder')->rebuildIfNeeded();
+
+
+}

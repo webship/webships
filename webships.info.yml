@@ -1,0 +1,48 @@
+name: Webships
+type: profile
+description: 'Webships of custom apps gallery server site manager. Which the WebApps get the list of apps to be listed in any Webship Drupal site.'
+core_version_requirement: ^9
+version: 1.0.x-dev
+package: Webships
+project: webships
+distribution:
+  name: Webships
+  install:
+    theme: claro
+themes:
+  - claro
+install:
+  - system
+  - config
+  - user
+  - block
+  - block_content
+  - node
+  - views
+  - views_ui
+  - history
+  - breakpoint
+  - ckeditor
+  - datetime
+  - editor
+  - help
+  - image
+  - menu_ui
+  - options
+  - path
+  - page_cache
+  - dynamic_page_cache
+  - taxonomy
+  - dblog
+  - search
+  - shortcut
+  - toolbar
+  - field_ui
+  - file
+  - jsonapi
+  - jsonapi_extras
+  - jsonapi_defaults
+  - openapi
+  - openapi_jsonapi
+  - openapi_ui_redoc
+  - openapi_ui_swagger

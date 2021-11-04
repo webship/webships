@@ -1,0 +1,100 @@
+
+.toolbar-horizontal .toolbar-tray {
+  border-bottom-color: #292961;
+}
+
+#toolbar-administration.toolbar .toolbar-bar {
+  background-color: #3a3a6e;
+}
+
+#toolbar-administration.toolbar .toolbar-menu {
+  background: #292961;
+}
+
+
+#toolbar-item-administration-search-tray label {
+  background: transparent;
+  color: #FFFFFF !important;
+}
+
+#toolbar-administration .toolbar-tray .toolbar-menu li {
+  background: #292961;
+}
+
+#toolbar-administration .toolbar-tray a,
+#toolbar-administration .toolbar-tray span {
+  background: #292961;
+  color: #FFFFFF;
+}
+
+#toolbar-administration.toolbar .toolbar-tray {
+  background-color: #292961;
+}
+
+#toolbar-administration.toolbar .toolbar-tray-horizontal {
+  border-bottom: 1px solid #292961;
+}
+
+#toolbar-administration.toolbar .toolbar-tray-vertical {
+  box-shadow: -2px 2px 12px #292961;
+}
+
+#toolbar-administration.toolbar .toolbar-toggle-orientation {
+  background-color: #292961;
+}
+
+#toolbar-administration .toolbar-tray-horizontal a:focus,
+#toolbar-administration .toolbar-box a:focus {
+  background: #292961;
+}
+
+#toolbar-administration.toolbar .toolbar-tray-vertical .toolbar-menu a {
+  color: #FFFFFF;
+}
+
+#toolbar-administration.toolbar .toolbar-tray-vertical .toolbar-menu a:hover,
+#toolbar-administration.toolbar .toolbar-tray-vertical .toolbar-menu a:focus {
+  color: #FFFFFF;
+  background: #3a3a6e;
+}
+
+#toolbar-administration.toolbar .menu-item:hover {
+  background-color: #3a3a6e;
+}
+
+#toolbar-administration .toolbar-tray-horizontal .menu-item a:focus {
+  background: #292961;
+}
+
+#toolbar-administration.toolbar .menu-item--expanded {
+  background-color: #292961;
+}
+
+#toolbar-administration.toolbar .toolbar-menu .toolbar-menu a {
+  color: #FFFFFF;
+  font-size: 3rem;
+}
+
+#toolbar-administration.toolbar .toolbar-menu .toolbar-menu a:hover {
+  color: #FFFFFF;
+}
+
+#toolbar-administration.toolbar .toolbar-tray-horizontal ul  ul li.menu-item:first-child {
+  border: 1px solid #292961;
+}
+
+#toolbar-administration.toolbar .toolbar-menu .menu-item .toolbar-icon:before {
+  background-image: url('../../images/logo-wight.svg') !important;
+}
+
+html body .button--primary {
+  background-color: #292961;
+}
+html body a.button--primary:hover,
+html body a.button--primary:active {
+  background-color: #3a3a6e;
+}
+
+.toolbar .toolbar-tray-vertical .menu-item:last-child {
+  display: none;
+}

@@ -1,0 +1,9 @@
+install-page:
+  css:
+    theme:
+      css/theme/install-page.css: { }
+
+toolbar-style:
+  css:
+    theme:
+      css/theme/toolbar-style.css: { }
