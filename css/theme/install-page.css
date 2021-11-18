@@ -1,8 +1,8 @@
 /**
- * @file
- * Installation styling.
- *
- */
+* @file
+* Installation styling.
+*
+*/
 
 html body,
 html body a,
@@ -14,32 +14,29 @@ html body .claro-details,
 html body .claro-details__summary,
 html body .form-item__description,
 html body .task-list li {
-  color: #292961;
+  color: #3a3a6e;
 }
 
 html body .task-list .is-active,
 html body .button--primary,
 html body .claro-details__summary:hover {
-  background: #292961;
+  background: #3a3a6e;
   color: #ffffff;
 }
 
 html body .button--primary:hover,
 html body .button--primary:focus,
 html body .button--primary:active {
-  background: #342961;
+  background: #3c3d41;
 }
 
 html body .task-list .is-active:after {
-  border-left-color: #292961;
+  border-left-color: #3a3a6e;
 }
 
 html body.install-page {
-  background: #292961 !important;
-  background-color: #292961 !important;
-  background-image: url(../../images/logo-wight.svg) !important;
-  background-position: center center;
-  background-repeat: no-repeat;
+  background: #3a3a6e !important;
+  background-color: #3a3a6e !important;
 }
 
 html body .layout-container header {
@@ -48,6 +45,7 @@ html body .layout-container header {
   background-repeat: no-repeat;
   background-size: contain;
   height: 15rem;
+  margin-bottom: 2rem;
 }
 
 html body.install-page .page-title {
@@ -69,8 +67,8 @@ html body.install-page .page-title {
 }
 
 html body .progress__bar {
-  border: 1px #292961 solid ;
-  background: #292961;
+  border: 1px #3a3a6e solid ;
+  background: #3a3a6e;
   height: 1.5rem;
 }
 

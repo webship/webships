@@ -38,5 +38,6 @@ install:
   - shortcut
   - toolbar
   - field_ui
-  - file
+  - webdev
+  - webadmin
   - varbase_api
