@@ -16,7 +16,7 @@ use Drupal\user\UserInterface;
  */
 function webships_install() {
   // Set front page to "node".
-  \Drupal::configFactory()->getEditable('system.site')->set('page.front', '/node')->save(TRUE);
+  \Drupal::configFactory()->getEditable('system.site')->set('page.front', '/openapi-docs')->save(TRUE);
 
   // Restrict user registration to admin role creation.
   \Drupal::configFactory()->getEditable('user.settings')->set('register', UserInterface::REGISTER_ADMINISTRATORS_ONLY)->save(TRUE);

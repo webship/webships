@@ -37,13 +37,7 @@
     "drupal/core-project-message": "~9.0",
     "cweagans/composer-patches": "~1.0",
     "drupal/core": "~9.0",
-    "drupal/jsonapi_extras": "~3.0",
-    "drupal/consumers": "~1.0",
-    "drupal/openapi": "~2.0",
-    "drupal/openapi_jsonapi": "~3.0",
-    "drupal/openapi_rest": "~2.0",
-    "drupal/openapi_ui_redoc": "~1.0",
-    "drupal/openapi_ui_swagger": "~1.0",
+    "drupal/varbase_api": "~9.0",
     "npm-asset/swagger-ui-dist": "~3.0"
   },
   "require-dev": {

@@ -39,10 +39,4 @@ install:
   - toolbar
   - field_ui
   - file
-  - jsonapi
-  - jsonapi_extras
-  - jsonapi_defaults
-  - openapi
-  - openapi_jsonapi
-  - openapi_ui_redoc
-  - openapi_ui_swagger
+  - varbase_api
