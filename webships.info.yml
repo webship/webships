@@ -41,3 +41,5 @@ install:
   - webdev
   - webadmin
   - varbase_api
+  - search_api
+  - search_api_solr

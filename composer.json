@@ -40,7 +40,9 @@
     "drupal/webdev": "~9.0",
     "drupal/webadmin": "~9.0",
     "drupal/varbase_api": "~9.0",
-    "npm-asset/swagger-ui-dist": "~3.0"
+    "npm-asset/swagger-ui-dist": "~3.0",
+    "drupal/search_api": "~1.0",
+    "drupal/search_api_solr": "~4.0"
   },
   "require-dev": {
     "drupal/core-dev": "~9.0",
