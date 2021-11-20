@@ -1,0 +1,122 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - jsonapi_defaults
+    - search_api_solr
+third_party_settings:
+  jsonapi_defaults:
+    page_limit: 50
+id: solr_field_type--solr_field_type
+disabled: true
+path: solr_field_type/solr_field_type
+resourceType: solr_field_type--solr_field_type
+resourceFields:
+  uuid:
+    fieldName: uuid
+    publicName: uuid
+    enhancer:
+      id: ''
+    disabled: false
+  langcode:
+    fieldName: langcode
+    publicName: langcode
+    enhancer:
+      id: ''
+    disabled: false
+  status:
+    fieldName: status
+    publicName: status
+    enhancer:
+      id: ''
+    disabled: false
+  dependencies:
+    fieldName: dependencies
+    publicName: dependencies
+    enhancer:
+      id: ''
+    disabled: false
+  third_party_settings:
+    fieldName: third_party_settings
+    publicName: third_party_settings
+    enhancer:
+      id: ''
+    disabled: false
+  _core:
+    fieldName: _core
+    publicName: _core
+    enhancer:
+      id: ''
+    disabled: false
+  id:
+    fieldName: id
+    publicName: id
+    enhancer:
+      id: ''
+    disabled: false
+  label:
+    fieldName: label
+    publicName: label
+    enhancer:
+      id: ''
+    disabled: false
+  minimum_solr_version:
+    fieldName: minimum_solr_version
+    publicName: minimum_solr_version
+    enhancer:
+      id: ''
+    disabled: false
+  custom_code:
+    fieldName: custom_code
+    publicName: custom_code
+    enhancer:
+      id: ''
+    disabled: false
+  field_type_language_code:
+    fieldName: field_type_language_code
+    publicName: field_type_language_code
+    enhancer:
+      id: ''
+    disabled: false
+  domains:
+    fieldName: domains
+    publicName: domains
+    enhancer:
+      id: ''
+    disabled: false
+  field_type:
+    fieldName: field_type
+    publicName: field_type
+    enhancer:
+      id: ''
+    disabled: false
+  unstemmed_field_type:
+    fieldName: unstemmed_field_type
+    publicName: unstemmed_field_type
+    enhancer:
+      id: ''
+    disabled: false
+  spellcheck_field_type:
+    fieldName: spellcheck_field_type
+    publicName: spellcheck_field_type
+    enhancer:
+      id: ''
+    disabled: false
+  collated_field_type:
+    fieldName: collated_field_type
+    publicName: collated_field_type
+    enhancer:
+      id: ''
+    disabled: false
+  solr_configs:
+    fieldName: solr_configs
+    publicName: solr_configs
+    enhancer:
+      id: ''
+    disabled: false
+  text_files:
+    fieldName: text_files
+    publicName: text_files
+    enhancer:
+      id: ''
+    disabled: false

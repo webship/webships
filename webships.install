@@ -6,6 +6,7 @@
  */
 
 use Drupal\user\UserInterface;
+use Drupal\Core\Language\LanguageInterface;
 
 /**
  * Implements hook_install().
@@ -15,8 +16,7 @@ use Drupal\user\UserInterface;
  * @see system_install()
  */
 function webships_install() {
-  // Set front page to "node".
-  \Drupal::configFactory()->getEditable('system.site')->set('page.front', '/openapi-docs')->save(TRUE);
+
 
   // Restrict user registration to admin role creation.
   \Drupal::configFactory()->getEditable('user.settings')->set('register', UserInterface::REGISTER_ADMINISTRATORS_ONLY)->save(TRUE);
@@ -32,5 +32,49 @@ function webships_install() {
   // menu links are valid.
   \Drupal::service('router.builder')->rebuildIfNeeded();
 
+  // --------------------------------------------------------------------------.
+  // If the openapi_ui_redoc and jsonapi modules are installed, give the API
+  // documentation a nice path alias.
+  $module_handler = Drupal::service('module_handler');
+  if ($module_handler->moduleExists('openapi_ui_redoc')
+    && $module_handler->moduleExists('jsonapi')) {
+
+    $alias_manager = \Drupal::service('path_alias.manager');
+
+    // If the "/api-docs" alias was in the system.
+    $path = $alias_manager->getPathByAlias('/api-docs');
+
+    if (empty($path)) {
+      $route_parameters = [
+        'openapi_ui' => 'redoc',
+        'openapi_generator' => 'jsonapi',
+      ];
+      $path_alias = \Drupal::entityTypeManager()->getStorage('path_alias')->create([
+        'path' => Url::fromRoute('openapi.documentation', $route_parameters)->toString(),
+        'alias' => '/api-docs',
+        'langcode' => LanguageInterface::LANGCODE_NOT_SPECIFIED,
+      ]);
+      $path_alias->save();
+    }
+
+    // If the "/openapi-docs" alias was in the system.
+    $path = $alias_manager->getPathByAlias('/openapi-docs');
+
+    if (empty($path)) {
+      $route_parameters = [
+        'openapi_ui' => 'redoc',
+        'openapi_generator' => 'swagger',
+      ];
+      $path_alias = \Drupal::entityTypeManager()->getStorage('path_alias')->create([
+        'path' => Url::fromRoute('openapi.documentation', $route_parameters)->toString(),
+        'alias' => '/openapi-docs',
+        'langcode' => LanguageInterface::LANGCODE_NOT_SPECIFIED,
+      ]);
+      $path_alias->save();
+    }
+  }
+
+  // Set front page to "/openapi-docs".
+  \Drupal::configFactory()->getEditable('system.site')->set('page.front', '/openapi-docs')->save(TRUE);
 
 }
