@@ -35,7 +35,6 @@ install:
   - dynamic_page_cache
   - taxonomy
   - dblog
-  - search
   - shortcut
   - toolbar
   - field_ui
