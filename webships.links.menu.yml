@@ -1,0 +1,28 @@
+webships.home:
+  title: 'Home'
+  description: 'Homepage'
+  parent: main
+  menu_name: main
+  url: internal:/
+  weight: 100
+webships.search:
+  title: 'Search'
+  description: 'Search'
+  parent: main
+  menu_name: main
+  url: internal:/search
+  weight: 110
+webships.api-docs:
+  title: 'API Docs'
+  description: 'API Docs'
+  parent: main
+  menu_name: main
+  url: internal:/api-docs
+  weight: 120
+webships.openapi-docs:
+  title: 'OpenAPI Docs'
+  description: 'OpenAPI Docs'
+  parent: main
+  menu_name: main
+  url: internal:/openapi-docs
+  weight: 130

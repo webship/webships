@@ -1,0 +1,92 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - jsonapi_defaults
+    - search_api_solr
+third_party_settings:
+  jsonapi_defaults:
+    page_limit: 50
+id: solr_request_handler--solr_request_handler
+disabled: true
+path: solr_request_handler/solr_request_handler
+resourceType: solr_request_handler--solr_request_handler
+resourceFields:
+  uuid:
+    fieldName: uuid
+    publicName: uuid
+    enhancer:
+      id: ''
+    disabled: false
+  langcode:
+    fieldName: langcode
+    publicName: langcode
+    enhancer:
+      id: ''
+    disabled: false
+  status:
+    fieldName: status
+    publicName: status
+    enhancer:
+      id: ''
+    disabled: false
+  dependencies:
+    fieldName: dependencies
+    publicName: dependencies
+    enhancer:
+      id: ''
+    disabled: false
+  third_party_settings:
+    fieldName: third_party_settings
+    publicName: third_party_settings
+    enhancer:
+      id: ''
+    disabled: false
+  _core:
+    fieldName: _core
+    publicName: _core
+    enhancer:
+      id: ''
+    disabled: false
+  id:
+    fieldName: id
+    publicName: id
+    enhancer:
+      id: ''
+    disabled: false
+  label:
+    fieldName: label
+    publicName: label
+    enhancer:
+      id: ''
+    disabled: false
+  minimum_solr_version:
+    fieldName: minimum_solr_version
+    publicName: minimum_solr_version
+    enhancer:
+      id: ''
+    disabled: false
+  environments:
+    fieldName: environments
+    publicName: environments
+    enhancer:
+      id: ''
+    disabled: false
+  recommended:
+    fieldName: recommended
+    publicName: recommended
+    enhancer:
+      id: ''
+    disabled: false
+  request_handler:
+    fieldName: request_handler
+    publicName: request_handler
+    enhancer:
+      id: ''
+    disabled: false
+  solr_configs:
+    fieldName: solr_configs
+    publicName: solr_configs
+    enhancer:
+      id: ''
+    disabled: false

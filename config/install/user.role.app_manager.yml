@@ -1,0 +1,43 @@
+langcode: en
+status: true
+dependencies: {  }
+id: app_manager
+label: 'App Manager'
+weight: -8
+is_admin: null
+permissions:
+  - 'access content overview'
+  - 'access shortcuts'
+  - 'access taxonomy overview'
+  - 'access toolbar'
+  - 'access user profiles'
+  - 'access view api docs entity operation'
+  - 'access view json entity operation'
+  - 'administer blocks'
+  - 'administer entityqueue'
+  - 'administer menu'
+  - 'administer nodes'
+  - 'administer search'
+  - 'administer search_api'
+  - 'administer shortcuts'
+  - 'administer software updates'
+  - 'administer taxonomy'
+  - 'administer url aliases'
+  - 'administer varbase api settings'
+  - 'administer workflows'
+  - 'create url aliases'
+  - 'customize shortcut links'
+  - 'delete all revisions'
+  - 'manipulate all entityqueues'
+  - 'manipulate entityqueues'
+  - 'masquerade as authenticated'
+  - 'revert all revisions'
+  - 'search content'
+  - 'switch shortcut sets'
+  - 'use advanced search'
+  - 'use views bulk edit'
+  - 'view all revisions'
+  - 'view any unpublished content'
+  - 'view latest version'
+  - 'view own unpublished content'
+  - 'view the administration theme'
