@@ -1,0 +1,16 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus: {  }
+    parent: ''
+name: WebApp
+type: webapp
+description: 'Use <em>WebApp</em> to add projects. Which can be listed in the App Store.'
+help: ''
+new_revision: true
+preview_mode: 1
+display_submitted: false

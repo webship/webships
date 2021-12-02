@@ -1,0 +1,169 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.full
+    - field.field.node.webapp.field_description
+    - field.field.node.webapp.field_icon
+    - field.field.node.webapp.field_logo
+    - field.field.node.webapp.field_organizations
+    - field.field.node.webapp.field_source_code
+    - field.field.node.webapp.field_webapp_category
+    - node.type.webapp
+  module:
+    - image
+    - layout_builder
+    - layout_discovery
+    - link
+    - user
+third_party_settings:
+  layout_builder:
+    allow_custom: false
+    enabled: true
+    sections:
+      -
+        layout_id: layout_twocol_section
+        layout_settings:
+          label: ''
+          column_widths: 25-75
+          context_mapping: {  }
+        components:
+          7ed5d869-e4a7-404a-ba82-fe7e98582cc7:
+            uuid: 7ed5d869-e4a7-404a-ba82-fe7e98582cc7
+            region: first
+            configuration:
+              id: 'field_block:node:webapp:field_logo'
+              label: Logo
+              provider: layout_builder
+              label_display: '0'
+              formatter:
+                label: hidden
+                type: image
+                settings:
+                  image_style: large
+                  image_link: ''
+                third_party_settings: {  }
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+            additional: {  }
+            weight: 0
+          68db8b73-e246-4b5a-8d58-c92f8a1b6c27:
+            uuid: 68db8b73-e246-4b5a-8d58-c92f8a1b6c27
+            region: second
+            configuration:
+              id: 'field_block:node:webapp:field_webapp_category'
+              label: Category
+              provider: layout_builder
+              label_display: '0'
+              formatter:
+                label: inline
+                type: entity_reference_label
+                settings:
+                  link: true
+                third_party_settings: {  }
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+            additional: {  }
+            weight: 0
+          2b5a6474-d888-4d12-8e35-c256d7fd2af3:
+            uuid: 2b5a6474-d888-4d12-8e35-c256d7fd2af3
+            region: second
+            configuration:
+              id: 'field_block:node:webapp:field_organizations'
+              label: By
+              provider: layout_builder
+              label_display: '0'
+              formatter:
+                label: inline
+                type: entity_reference_label
+                settings:
+                  link: true
+                third_party_settings: {  }
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+            additional: {  }
+            weight: 1
+        third_party_settings: {  }
+      -
+        layout_id: layout_onecol
+        layout_settings:
+          label: ''
+          context_mapping: {  }
+        components:
+          98e778a6-fd04-4a3c-bf9b-50dc11bd3979:
+            uuid: 98e778a6-fd04-4a3c-bf9b-50dc11bd3979
+            region: content
+            configuration:
+              id: 'field_block:node:webapp:field_description'
+              label: Description
+              provider: layout_builder
+              label_display: '0'
+              formatter:
+                label: hidden
+                type: basic_string
+                settings: {  }
+                third_party_settings: {  }
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+            additional: {  }
+            weight: 0
+        third_party_settings: {  }
+id: node.webapp.full
+targetEntityType: node
+bundle: webapp
+mode: full
+content:
+  field_description:
+    weight: 0
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: basic_string
+    region: content
+  field_icon:
+    weight: 2
+    label: above
+    settings:
+      image_style: ''
+      image_link: ''
+    third_party_settings: {  }
+    type: image
+    region: content
+  field_logo:
+    weight: 1
+    label: above
+    settings:
+      image_style: ''
+      image_link: ''
+    third_party_settings: {  }
+    type: image
+    region: content
+  field_source_code:
+    weight: 3
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    type: link
+    region: content
+  field_webapp_category:
+    weight: 4
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+hidden:
+  field_organizations: true
+  langcode: true
+  links: true
+  search_api_excerpt: true

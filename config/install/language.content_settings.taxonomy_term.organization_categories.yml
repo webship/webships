@@ -1,0 +1,10 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.organization_categories
+id: taxonomy_term.organization_categories
+target_entity_type_id: taxonomy_term
+target_bundle: organization_categories
+default_langcode: site_default
+language_alterable: false

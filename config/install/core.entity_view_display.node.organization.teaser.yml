@@ -1,0 +1,105 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.organization.field_description
+    - field.field.node.organization.field_logo
+    - field.field.node.organization.field_organization_category
+    - node.type.organization
+  module:
+    - layout_builder
+    - user
+third_party_settings:
+  layout_builder:
+    allow_custom: false
+    enabled: true
+    sections:
+      -
+        layout_id: layout_threecol_section
+        layout_settings:
+          label: ''
+          column_widths: 25-25-50
+          context_mapping: {  }
+        components:
+          b82cd094-7a62-43b3-bd18-55e4ddcda814:
+            uuid: b82cd094-7a62-43b3-bd18-55e4ddcda814
+            region: first
+            configuration:
+              id: 'field_block:node:organization:field_logo'
+              label: Logo
+              provider: layout_builder
+              label_display: '0'
+              formatter:
+                label: hidden
+                type: image
+                settings:
+                  image_style: medium
+                  image_link: content
+                third_party_settings: {  }
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+            additional: {  }
+            weight: 0
+          cdfb5b0f-2352-4dfa-a3a3-11437ef57fd1:
+            uuid: cdfb5b0f-2352-4dfa-a3a3-11437ef57fd1
+            region: second
+            configuration:
+              id: 'field_block:node:organization:field_organization_category'
+              label: 'Organization Category'
+              provider: layout_builder
+              label_display: '0'
+              formatter:
+                label: hidden
+                type: entity_reference_label
+                settings:
+                  link: true
+                third_party_settings: {  }
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+            additional: {  }
+            weight: 0
+          66de7f4b-ec60-4352-9e40-d800fbb2f0c6:
+            uuid: 66de7f4b-ec60-4352-9e40-d800fbb2f0c6
+            region: third
+            configuration:
+              id: 'field_block:node:organization:field_description'
+              label: Description
+              provider: layout_builder
+              label_display: '0'
+              formatter:
+                label: hidden
+                type: smart_trim
+                settings:
+                  trim_length: 300
+                  trim_type: chars
+                  trim_suffix: ...
+                  wrap_output: false
+                  wrap_class: trimmed
+                  more_link: true
+                  more_text: More
+                  more_class: more-link
+                  trim_options:
+                    text: true
+                    trim_zero: true
+                third_party_settings: {  }
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+            additional: {  }
+            weight: 0
+        third_party_settings: {  }
+id: node.organization.teaser
+targetEntityType: node
+bundle: organization
+mode: teaser
+content: {  }
+hidden:
+  field_description: true
+  field_logo: true
+  field_organization_category: true
+  langcode: true
+  links: true
+  search_api_excerpt: true

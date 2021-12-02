@@ -1,0 +1,126 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.webapp.field_description
+    - field.field.node.webapp.field_icon
+    - field.field.node.webapp.field_logo
+    - field.field.node.webapp.field_organizations
+    - field.field.node.webapp.field_source_code
+    - field.field.node.webapp.field_webapp_category
+    - node.type.webapp
+  module:
+    - layout_builder
+    - user
+third_party_settings:
+  layout_builder:
+    allow_custom: false
+    enabled: true
+    sections:
+      -
+        layout_id: layout_twocol_section
+        layout_settings:
+          label: ''
+          column_widths: 25-75
+          context_mapping: {  }
+        components:
+          c044ddf9-664e-4a08-baf5-497c1c2532d1:
+            uuid: c044ddf9-664e-4a08-baf5-497c1c2532d1
+            region: first
+            configuration:
+              id: 'field_block:node:webapp:field_logo'
+              label: Logo
+              provider: layout_builder
+              label_display: '0'
+              formatter:
+                label: hidden
+                type: image
+                settings:
+                  image_style: medium
+                  image_link: content
+                third_party_settings: {  }
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+            additional: {  }
+            weight: 0
+          8229a7ba-c48a-4ca6-b7f3-b1865e5e5482:
+            uuid: 8229a7ba-c48a-4ca6-b7f3-b1865e5e5482
+            region: second
+            configuration:
+              id: 'field_block:node:webapp:field_description'
+              label: Description
+              provider: layout_builder
+              label_display: '0'
+              formatter:
+                label: hidden
+                type: smart_trim
+                settings:
+                  trim_length: 300
+                  trim_type: chars
+                  trim_suffix: ...
+                  wrap_output: false
+                  wrap_class: trimmed
+                  more_link: true
+                  more_text: More
+                  more_class: more-link
+                  trim_options:
+                    text: true
+                    trim_zero: true
+                third_party_settings: {  }
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+            additional: {  }
+            weight: 1
+          dbd1ec70-acea-4e47-bdf1-df13b54adfb4:
+            uuid: dbd1ec70-acea-4e47-bdf1-df13b54adfb4
+            region: second
+            configuration:
+              id: 'field_block:node:webapp:field_source_code'
+              label: 'Source Code'
+              provider: layout_builder
+              label_display: '0'
+              formatter:
+                label: inline
+                type: link
+                settings:
+                  trim_length: 80
+                  url_only: true
+                  url_plain: false
+                  rel: nofollow
+                  target: _blank
+                third_party_settings: {  }
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+            additional: {  }
+            weight: 2
+        third_party_settings: {  }
+      -
+        layout_id: layout_fourcol_section
+        layout_settings:
+          label: ''
+          context_mapping: {  }
+        components: {  }
+        third_party_settings: {  }
+id: node.webapp.teaser
+targetEntityType: node
+bundle: webapp
+mode: teaser
+content:
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden:
+  field_description: true
+  field_icon: true
+  field_logo: true
+  field_organizations: true
+  field_source_code: true
+  field_webapp_category: true
+  langcode: true
+  search_api_excerpt: true

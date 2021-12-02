@@ -1,14 +1,17 @@
 langcode: en
 status: true
 dependencies: {  }
-id: api_manager
-label: 'API Manager'
+id: api_admin
+label: 'API Admin'
 weight: -7
 is_admin: null
 permissions:
+  - 'access administration pages'
   - 'access content overview'
   - 'access schemata data models'
   - 'access shortcuts'
+  - 'access site in maintenance mode'
+  - 'access site reports'
   - 'access taxonomy overview'
   - 'access toolbar'
   - 'access user profiles'
@@ -24,6 +27,7 @@ permissions:
   - 'administer search_api'
   - 'administer shortcuts'
   - 'administer software updates'
+  - 'administer statistics'
   - 'administer taxonomy'
   - 'administer url aliases'
   - 'administer varbase api settings'
@@ -43,4 +47,5 @@ permissions:
   - 'view all revisions'
   - 'view own consumer entities'
   - 'view own unpublished content'
+  - 'view post access counter'
   - 'view the administration theme'

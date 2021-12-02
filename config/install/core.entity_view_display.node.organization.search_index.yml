@@ -1,0 +1,41 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.search_index
+    - field.field.node.organization.field_description
+    - field.field.node.organization.field_logo
+    - field.field.node.organization.field_organization_category
+    - node.type.organization
+  module:
+    - layout_builder
+    - user
+third_party_settings:
+  layout_builder:
+    allow_custom: false
+    enabled: false
+id: node.organization.search_index
+targetEntityType: node
+bundle: organization
+mode: search_index
+content:
+  field_description:
+    weight: 0
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: basic_string
+    region: content
+  field_organization_category:
+    weight: 1
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+hidden:
+  field_logo: true
+  langcode: true
+  links: true
+  search_api_excerpt: true

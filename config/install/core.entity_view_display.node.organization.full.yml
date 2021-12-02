@@ -1,0 +1,143 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.full
+    - field.field.node.organization.field_description
+    - field.field.node.organization.field_logo
+    - field.field.node.organization.field_organization_category
+    - node.type.organization
+    - views.view.webapps
+  module:
+    - image
+    - layout_builder
+    - layout_discovery
+    - user
+    - views
+third_party_settings:
+  layout_builder:
+    allow_custom: false
+    enabled: true
+    sections:
+      -
+        layout_id: layout_threecol_section
+        layout_settings:
+          label: ''
+          column_widths: 25-25-50
+          context_mapping: {  }
+        components:
+          11a12880-2c57-4490-babe-c49b0012f006:
+            uuid: 11a12880-2c57-4490-babe-c49b0012f006
+            region: first
+            configuration:
+              id: 'field_block:node:organization:field_logo'
+              label: Logo
+              provider: layout_builder
+              label_display: '0'
+              formatter:
+                label: hidden
+                type: image
+                settings:
+                  image_style: medium
+                  image_link: ''
+                third_party_settings: {  }
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+            additional: {  }
+            weight: 0
+          d66d2e44-29b8-466b-8495-5176dba48929:
+            uuid: d66d2e44-29b8-466b-8495-5176dba48929
+            region: second
+            configuration:
+              id: 'field_block:node:organization:field_organization_category'
+              label: 'Organization Category'
+              provider: layout_builder
+              label_display: '0'
+              formatter:
+                label: hidden
+                type: entity_reference_label
+                settings:
+                  link: true
+                third_party_settings: {  }
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+            additional: {  }
+            weight: 0
+        third_party_settings: {  }
+      -
+        layout_id: layout_onecol
+        layout_settings:
+          label: ''
+          context_mapping: {  }
+        components:
+          54671df1-6abb-40bd-863b-574c88a0cfcf:
+            uuid: 54671df1-6abb-40bd-863b-574c88a0cfcf
+            region: content
+            configuration:
+              id: 'field_block:node:organization:field_description'
+              label: Description
+              provider: layout_builder
+              label_display: '0'
+              formatter:
+                label: hidden
+                type: basic_string
+                settings: {  }
+                third_party_settings: {  }
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+            additional: {  }
+            weight: 0
+          e728d443-44c8-4fcc-a56e-18442519e7da:
+            uuid: e728d443-44c8-4fcc-a56e-18442519e7da
+            region: content
+            configuration:
+              id: 'views_block:webapps-block_2'
+              label: 'Webapps by this organization'
+              provider: views
+              label_display: visible
+              views_label: 'Webapps by this organization'
+              items_per_page: none
+              context_mapping: {  }
+            additional: {  }
+            weight: 1
+        third_party_settings: {  }
+id: node.organization.full
+targetEntityType: node
+bundle: organization
+mode: full
+content:
+  field_description:
+    weight: 101
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: basic_string
+    region: content
+  field_logo:
+    weight: 102
+    label: above
+    settings:
+      image_style: ''
+      image_link: ''
+    third_party_settings: {  }
+    type: image
+    region: content
+  field_organization_category:
+    weight: 103
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden:
+  langcode: true
+  search_api_excerpt: true

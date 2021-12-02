@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - ctools
+    - taxonomy
+id: category_organizations
+label: 'Category Organizations'
+type: 'canonical_entities:taxonomy_term'
+pattern: 'categories/organizations/[term:name]'
+selection_criteria:
+  4c7855b2-7fec-4339-a137-d715284134cd:
+    id: 'entity_bundle:taxonomy_term'
+    bundles:
+      organization_categories: organization_categories
+    negate: false
+    context_mapping:
+      taxonomy_term: taxonomy_term
+    uuid: 4c7855b2-7fec-4339-a137-d715284134cd
+selection_logic: and
+weight: -7
+relationships: {  }

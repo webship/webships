@@ -1,0 +1,21 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: webapps
+label: Webapps
+type: 'canonical_entities:node'
+pattern: 'webapps/[node:title]'
+selection_criteria:
+  fb1d0a04-7087-4945-9534-af5e4fadb556:
+    id: node_type
+    bundles:
+      webapp: webapp
+    negate: false
+    context_mapping:
+      node: node
+    uuid: fb1d0a04-7087-4945-9534-af5e4fadb556
+selection_logic: and
+weight: -10
+relationships: {  }

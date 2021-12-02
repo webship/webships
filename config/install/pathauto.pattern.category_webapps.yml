@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - ctools
+    - taxonomy
+id: category_webapps
+label: 'Category Webapps'
+type: 'canonical_entities:taxonomy_term'
+pattern: 'categories/webapps/[term:name]'
+selection_criteria:
+  97655da8-621c-43d3-8e19-8b75cd20ca68:
+    id: 'entity_bundle:taxonomy_term'
+    bundles:
+      wepapp_categories: wepapp_categories
+    negate: false
+    context_mapping:
+      taxonomy_term: taxonomy_term
+    uuid: 97655da8-621c-43d3-8e19-8b75cd20ca68
+selection_logic: and
+weight: -9
+relationships: {  }

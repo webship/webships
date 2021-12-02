@@ -1,0 +1,7 @@
+langcode: en
+status: true
+dependencies: {  }
+name: 'Organization Categories'
+vid: organization_categories
+description: ''
+weight: 0

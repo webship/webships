@@ -1,0 +1,76 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - responsive_image
+id: responsive_image_style--responsive_image_style
+disabled: true
+path: responsive_image_style/responsive_image_style
+resourceType: responsive_image_style--responsive_image_style
+resourceFields:
+  uuid:
+    fieldName: uuid
+    publicName: uuid
+    enhancer:
+      id: ''
+    disabled: false
+  langcode:
+    fieldName: langcode
+    publicName: langcode
+    enhancer:
+      id: ''
+    disabled: false
+  status:
+    fieldName: status
+    publicName: status
+    enhancer:
+      id: ''
+    disabled: false
+  dependencies:
+    fieldName: dependencies
+    publicName: dependencies
+    enhancer:
+      id: ''
+    disabled: false
+  third_party_settings:
+    fieldName: third_party_settings
+    publicName: third_party_settings
+    enhancer:
+      id: ''
+    disabled: false
+  _core:
+    fieldName: _core
+    publicName: _core
+    enhancer:
+      id: ''
+    disabled: false
+  id:
+    fieldName: id
+    publicName: id
+    enhancer:
+      id: ''
+    disabled: false
+  label:
+    fieldName: label
+    publicName: label
+    enhancer:
+      id: ''
+    disabled: false
+  image_style_mappings:
+    fieldName: image_style_mappings
+    publicName: image_style_mappings
+    enhancer:
+      id: ''
+    disabled: false
+  breakpoint_group:
+    fieldName: breakpoint_group
+    publicName: breakpoint_group
+    enhancer:
+      id: ''
+    disabled: false
+  fallback_image_style:
+    fieldName: fallback_image_style
+    publicName: fallback_image_style
+    enhancer:
+      id: ''
+    disabled: false

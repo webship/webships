@@ -43,3 +43,31 @@ install:
   - varbase_api
   - search_api
   - search_api_solr
+  - autocomplete_deluxe
+  - metatag
+  - metatag_app_links
+  - metatag_facebook
+  - metatag_favicons
+  - metatag_google_cse
+  - metatag_google_plus
+  - metatag_open_graph
+  - metatag_open_graph_products
+  - metatag_twitter_cards
+  - metatag_verification
+  - metatag_views
+  - schema_article
+  - schema_article_example
+  - schema_image_object
+  - schema_metatag
+  - schema_organization
+  - schema_place
+  - schema_product
+  - schema_qa_page
+  - schema_review
+  - schema_service
+  - schema_special_announcement
+  - schema_web_page
+  - schema_web_site
+  - automated_cron
+  - layout_builder
+  - layout_discovery
