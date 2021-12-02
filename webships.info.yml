@@ -41,6 +41,7 @@ install:
   - webdev
   - webadmin
   - varbase_api
+  - search
   - search_api
   - search_api_solr
   - autocomplete_deluxe
@@ -71,3 +72,6 @@ install:
   - automated_cron
   - layout_builder
   - layout_discovery
+  - rdf
+  - config_perms
+  - responsive_image
