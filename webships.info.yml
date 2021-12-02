@@ -57,7 +57,6 @@ install:
   - metatag_verification
   - metatag_views
   - schema_article
-  - schema_article_example
   - schema_image_object
   - schema_metatag
   - schema_organization
@@ -72,6 +71,7 @@ install:
   - automated_cron
   - layout_builder
   - layout_discovery
+  - field_layout
   - rdf
   - config_perms
   - responsive_image
