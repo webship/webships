@@ -1,5 +1,5 @@
 {
-  "name": "webships/webships",
+  "name": "webship/webships",
   "description": "Webships of custom apps gallery server site manager. Which the WebApps get the list of apps to be listed in any Webship Drupal site.",
   "type": "drupal-profile",
   "license": "GPL-2.0-or-later",
