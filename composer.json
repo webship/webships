@@ -1,6 +1,6 @@
 {
   "name": "webship/webships",
-  "description": "Webships of custom apps gallery server site manager. Which the WebApps get the list of apps to be listed in any Webship Drupal site.",
+  "description": "Web components app store as a custom apps gallery server site manager. Which the WebApps get the list of apps to be listed in any Drupal site.",
   "type": "drupal-profile",
   "license": "GPL-2.0-or-later",
   "minimum-stability": "dev",
@@ -27,24 +27,19 @@
     }
   },
   "require": {
-    "composer/installers": "~1.0 || ~2.0",
-    "oomphinc/composer-installers-extender": "~1.0 || ~2.0",
-    "drupal/core-composer-scaffold": "~9.0",
-    "drupal/core-project-message": "~9.0",
+    "composer/installers": "~2.0",
+    "oomphinc/composer-installers-extender": "~2.0",
+    "drupal/core-composer-scaffold": "~10.0",
     "cweagans/composer-patches": "~1.0",
-    "drupal/core": "~9.0",
-    "vardot/entity-definition-update-manager": "~1.0",
-    "drupal/webdev": "~9.0",
-    "drupal/webadmin": "~9.0",
-    "drupal/varbase_api": "~9.0",
+    "drupal/core": "~10.0",
+    "drush/drush": "~11.0",
+    "drupal/webconfig": "10.0.x-dev",
+    "drupal/webdev": "10.0.x-dev",
+    "drupal/webadmin": "10.0.x-dev",
+    "drupal/varbase_api": "10.0.x-dev",
     "npm-asset/swagger-ui-dist": "~3.0",
     "drupal/search_api": "~1.0",
-    "drupal/search_api_solr": "~4.0",
-    "drupal/autocomplete_deluxe": "~2.0"
-  },
-  "require-dev": {
-    "drupal/core-dev": "~9.0",
-    "drush/drush": "~10.0"
+    "drupal/search_api_solr": "~4.0"
   },
   "config": {
     "bin-dir": "bin/",

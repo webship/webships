@@ -20,10 +20,3 @@ function webships_preprocess_install_page(&$variables) {
   // Webships has custom styling for the install page.
   $variables['#attached']['library'][] = 'webships/install-page';
 }
-
-/**
- * Implements hook_toolbar_alter().
- */
-function webships_toolbar_alter(&$items) {
-  $items['admin_toolbar_tools']['#attached']['library'][] = 'webships/toolbar-style';
-}

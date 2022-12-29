@@ -1,7 +1,7 @@
 name: Webships
 type: profile
-description: 'Webships of custom apps gallery server site manager. Which the WebApps get the list of apps to be listed in any Webship Drupal site.'
-core_version_requirement: ^9
+description: 'Web components app store as a custom apps gallery server site manager. Which the WebApps get the list of apps to be listed in any Drupal site.'
+core_version_requirement: ~10.0
 version: 1.0.x-dev
 package: Webships
 project: webships
@@ -38,6 +38,7 @@ install:
   - shortcut
   - toolbar
   - field_ui
+  - webconfig
   - webdev
   - webadmin
   - varbase_api
@@ -73,5 +74,4 @@ install:
   - layout_discovery
   - field_layout
   - rdf
-  - config_perms
   - responsive_image
