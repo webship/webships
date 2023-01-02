@@ -23,7 +23,6 @@ install:
   - views_ui
   - history
   - breakpoint
-  - ckeditor
   - datetime
   - editor
   - help
@@ -73,5 +72,4 @@ install:
   - layout_builder
   - layout_discovery
   - field_layout
-  - rdf
   - responsive_image

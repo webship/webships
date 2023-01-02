@@ -45,6 +45,7 @@ html body .layout-container header {
   background-repeat: no-repeat;
   background-size: contain;
   height: 10rem;
+  margin-bottom: 2rem;
 }
 
 html body.install-page .site-name {
@@ -52,7 +53,7 @@ html body.install-page .site-name {
   font-size: 3rem !important;
   display: inline-block !important;
   margin-top: 4rem !important;
-  margin-left: 10rem;
+  margin-left: 12rem;
 }
 
 html body.install-page .site-version {
