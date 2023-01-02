@@ -1,0 +1,11 @@
+langcode: en
+name: 'Webships App Store'
+mail: admin@webship.co
+slogan: ''
+page:
+  403: ''
+  404: ''
+  front: /search
+admin_compact_mode: false
+weight_select_max: 100
+default_langcode: en
