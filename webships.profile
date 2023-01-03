@@ -13,7 +13,7 @@ use Drupal\Core\Form\FormStateInterface;
  * Allows the profile to alter the site configuration form.
  */
 function webships_form_install_configure_form_alter(&$form, FormStateInterface $form_state) {
-  $form['site_information']['site_name']['#attributes']['placeholder'] = t('Webships.org App Store');
+  $form['site_information']['site_name']['#default_value'] = t('Webships.org App Store');
   $form['site_information']['site_mail']['#default_value'] = 'admin@webship.co';
   $form['admin_account']['account']['name']['#default_value'] = 'webmaster';
   $form['admin_account']['account']['mail']['#default_value'] = 'admin@webship.co';
