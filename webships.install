@@ -25,7 +25,7 @@ function webships_install() {
 
   // Install optional configs.
   $config_installer = \Drupal::service('config.installer');
-  $optional_install_path = drupal_get_path('profile', 'webships') . '/' . InstallStorage::CONFIG_OPTIONAL_DIRECTORY;
+  $optional_install_path = \Drupal::service('extension.list.profile')->getPath('webships') . '/' . InstallStorage::CONFIG_OPTIONAL_DIRECTORY;
   if (is_dir($optional_install_path)) {
     // Install any optional config the profile provides.
     $storage = new FileStorage($optional_install_path, StorageInterface::DEFAULT_COLLECTION);
