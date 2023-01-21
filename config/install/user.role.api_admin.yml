@@ -19,7 +19,6 @@ permissions:
   - 'access view json entity operation'
   - 'add consumer entities'
   - 'administer consumer entities'
-  - 'administer entityqueue'
   - 'administer menu'
   - 'administer nodes'
   - 'administer rest resources'
@@ -43,5 +42,4 @@ permissions:
   - 'view all revisions'
   - 'view own consumer entities'
   - 'view own unpublished content'
-  - 'view post access counter'
   - 'view the administration theme'

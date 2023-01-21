@@ -17,7 +17,6 @@ permissions:
   - 'access view api docs entity operation'
   - 'access view json entity operation'
   - 'administer blocks'
-  - 'administer entityqueue'
   - 'administer menu'
   - 'administer nodes'
   - 'administer search'
