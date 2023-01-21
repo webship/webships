@@ -57,6 +57,5 @@ permissions:
   - 'view latest version'
   - 'view organization revisions'
   - 'view own unpublished content'
-  - 'view post access counter'
   - 'view the administration theme'
   - 'view webapp revisions'
