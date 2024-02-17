@@ -36,6 +36,8 @@
     "drupal/webconfig": "~10",
     "drupal/webdev": "~10",
     "drupal/webadmin": "~10",
+    "drupal/webtheme": "~10",
+    "drupal/webtheme_admin": "~10",
     "drupal/varbase_api": "~10",
     "npm-asset/swagger-ui-dist": "~3",
     "drupal/search_api": "~1",

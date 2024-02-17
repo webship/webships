@@ -1,0 +1,6 @@
+logo:
+  use_default: false
+  path: profiles/webships/images/logo.svg
+brand_image:
+  use_default: false
+  path: profiles/webships/images/logo.svg

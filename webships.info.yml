@@ -11,7 +11,10 @@ distribution:
     theme: claro
 themes:
   - claro
+  - gin
+  - webtheme_admin
   - olivero
+  - webtheme
 install:
   - system
   - config
@@ -40,6 +43,8 @@ install:
   - webconfig
   - webdev
   - webadmin
+  - gin_login
+  - gin_toolbar
   - varbase_api
   - search
   - search_api
