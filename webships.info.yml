@@ -1,7 +1,7 @@
 name: Webships
 type: profile
 description: 'Web components app store as a custom apps gallery server site manager. Which the WebApps get the list of apps to be listed in any Drupal site.'
-core_version_requirement: ~10.0
+core_version_requirement: ~10.2.0
 version: 1.0.x-dev
 package: Webships
 project: webships
