@@ -30,6 +30,7 @@
     "composer/installers": "~2",
     "oomphinc/composer-installers-extender": "~2",
     "drupal/core-composer-scaffold": "~10",
+    "symplify/vendor-patches": "~11",
     "drupal/core": "~10.2.0",
     "drush/drush": "~12",
     "drupal/webpatches": "~10",
@@ -52,6 +53,8 @@
     },
     "allow-plugins": {
       "composer/installers": true,
+      "symplify/vendor-patches": true,
+      "cweagans/composer-configurable-plugin": true,
       "cweagans/composer-patches": true,
       "oomphinc/composer-installers-extender": true,
       "drupal/core-composer-scaffold": true
