@@ -19,10 +19,6 @@
     "drupal": {
       "type": "composer",
       "url": "https://packages.drupal.org/8"
-    },
-    "assets": {
-      "type": "composer",
-      "url": "https://asset-packagist.org"
     }
   },
   "require": {
@@ -37,7 +33,6 @@
     "drupal/webadmin": "^12",
     "drupal/webtheme": "^12",
     "drupal/webapi": "^1",
-    "npm-asset/swagger-ui-dist": "~3",
     "drupal/search_api": "~1",
     "drupal/search_api_solr": "~4"
   },
@@ -62,31 +57,6 @@
       "locations": {
         "web-root": "web/"
       }
-    },
-    "installer-types": [
-      "bower-asset",
-      "npm-asset"
-    ],
-    "installer-paths": {
-      "web/core": ["type:drupal-core"],
-      "web/profiles/{$name}": ["type:drupal-profile"],
-      "web/modules/contrib/{$name}": ["type:drupal-module"],
-      "web/themes/contrib/{$name}": ["type:drupal-theme"],
-      "web/libraries/swagger-ui/dist": ["npm-asset/swagger-ui-dist"],
-      "web/libraries/{$name}": [
-        "type:drupal-library",
-        "type:bower-asset",
-        "type:npm-asset"
-      ],
-      "web/modules/custom/{$name}": ["type:drupal-custom-module"],
-      "web/themes/custom/{$name}": ["type:drupal-custom-theme"],
-      "drush/contrib/{$name}": ["type:drupal-drush"]
-    },
-    "drupal-libraries": {
-      "library-directory": "web/libraries",
-      "libraries": [
-        {"name": "swagger-ui", "package": "npm-asset/swagger-ui-dist"}
-      ]
     },
     "enable-patching": true,
     "composer-exit-on-patch-failure": true,
