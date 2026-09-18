@@ -3,7 +3,6 @@
   "description": "Web components app store as a custom apps gallery server site manager. Which the WebApps get the list of apps to be listed in any Drupal site.",
   "type": "drupal-profile",
   "license": "GPL-2.0-or-later",
-  "minimum-stability": "dev",
   "prefer-stable": true,
   "authors": [
     {
