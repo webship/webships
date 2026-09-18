@@ -28,7 +28,7 @@ permissions:
   - 'administer software updates'
   - 'administer taxonomy'
   - 'administer url aliases'
-  - 'administer varbase api settings'
+  - 'administer webapi settings'
   - 'administer workflows'
   - 'create url aliases'
   - 'customize shortcut links'

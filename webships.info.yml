@@ -8,11 +8,10 @@ project: webships
 distribution:
   name: Webships
   install:
-    theme: claro
+    theme: default_admin
 themes:
   - claro
-  - gin
-  - webtheme_admin
+  - default_admin
   - olivero
   - webtheme
 install:
@@ -43,9 +42,7 @@ install:
   - webconfig
   - webdev
   - webadmin
-  - gin_login
-  - gin_toolbar
-  - varbase_api
+  - webapi
   - search
   - search_api
   - search_api_solr
