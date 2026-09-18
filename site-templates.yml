@@ -1,0 +1,40 @@
+# phpcs:ignoreFile
+#
+# A curated list of the Webships API site templates. The Webships installer
+# lists them, in addition to the `Site` recipes in the recipes directory of the
+# project. A site template that is already in the recipes directory is used as
+# it is; otherwise, the installer requires its package with Composer. The
+# canonical URL of this file is:
+# https://git.drupalcode.org/api/v4/projects/project%2Fwebships/repository/files/site-templates.yml/raw?ref=3.0.x
+#
+# Format of this file:
+# template_name:
+#   name: Human readable name of the template
+#   description: A brief description of the template
+#   package: The name of the package that provides this template
+#   links: A list of links related to the template, each with "text" and "url"
+#   creator: The name of the site template's creator (or organization)
+#
+# @see \Drupal\webships\SiteTemplate
+# @see \Drupal\webships\Form\SiteTemplateForm::getCuratedList()
+#
+# To override this list, convert it to a PHP array (`<?php return [...];`) and
+# place it in `sites/default/site-templates.php`.
+#
+webships_starter:
+  name: 'Webships Starter'
+  description: 'The Webships site template: a catalogue of apps, site templates and recipes, served over JSON:API for any Drupal site to read.'
+  package: 'drupal/webships_starter'
+  links:
+    - text: 'Learn more'
+      url: 'https://www.drupal.org/project/webships_starter'
+  creator: Webship
+
+webapi_starter:
+  name: 'WebAPI Starter'
+  description: 'The basic Drupal API site template: JSON:API read-only with an API path prefix and the Swagger documentation, and nothing else.'
+  package: 'drupal/webapi_starter'
+  links:
+    - text: 'Learn more'
+      url: 'https://www.drupal.org/project/webapi_starter'
+  creator: Webship

@@ -1,6 +1,6 @@
 {
   "name": "webship/webships",
-  "description": "Web components app store as a custom apps gallery server site manager. Which the WebApps get the list of apps to be listed in any Drupal site.",
+  "description": "The Webships installer: choose an API site template. It enables no modules of its own; the site template you choose decides what the site has.",
   "type": "drupal-profile",
   "license": "GPL-2.0-or-later",
   "prefer-stable": true,
@@ -22,19 +22,12 @@
     }
   },
   "require": {
+    "composer/composer": "^2.8",
     "composer/installers": "~2",
-    "oomphinc/composer-installers-extender": "~2",
-    "drupal/core-composer-scaffold": "^11.4 || ^12",
     "drupal/core": "^11.4 || ^12",
+    "drupal/core-composer-scaffold": "^11.4 || ^12",
     "drush/drush": "^13",
-    "drupal/webpatches": "^12",
-    "drupal/webconfig": "^12",
-    "drupal/webdev": "^12",
-    "drupal/webadmin": "^12",
-    "drupal/webtheme": "^12",
-    "drupal/webapi": "^1",
-    "drupal/search_api": "~1",
-    "drupal/search_api_solr": "~4"
+    "oomphinc/composer-installers-extender": "~2"
   },
   "config": {
     "bin-dir": "bin/",

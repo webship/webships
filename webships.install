@@ -2,92 +2,34 @@
 
 /**
  * @file
- * Install, update and uninstall functions for the Webships installation profile.
+ * Install and uninstall functions for the Webships installer.
  */
 
 use Drupal\user\UserInterface;
-use Drupal\Core\Language\LanguageInterface;
-use Symfony\Component\Yaml\Yaml;
-use Drupal\Core\Config\InstallStorage;
-use Drupal\Core\Config\StorageInterface;
-use Drupal\Core\Config\FileStorage;
-use Drupal\Core\Url;
-use Vardot\Entity\EntityDefinitionUpdateManager;
 
 /**
  * Implements hook_install().
  *
- * Perform actions to set up the site for this profile.
+ * The Webships installer enables no modules and ships no configuration of its
+ * own: the site template chosen during the install decides what the site has.
+ * Only the few settings that must be in place before any site template is
+ * applied belong here.
  *
  * @see system_install()
  */
 function webships_install() {
 
-  // Install optional configs.
-  $config_installer = \Drupal::service('config.installer');
-  $optional_install_path = \Drupal::service('extension.list.profile')->getPath('webships') . '/' . InstallStorage::CONFIG_OPTIONAL_DIRECTORY;
-  if (is_dir($optional_install_path)) {
-    // Install any optional config the profile provides.
-    $storage = new FileStorage($optional_install_path, StorageInterface::DEFAULT_COLLECTION);
-    $config_installer->installOptionalConfig($storage, '');
-    // Have the .settings.yml configs into the active config.
-    $settings_config_files = \Drupal::service('file_system')->scanDirectory($optional_install_path, '/^.*(settings.yml)$/i');
-    if (isset($settings_config_files) && is_array($settings_config_files)) {
-      foreach ($settings_config_files as $settings_config_file) {
-        $settings_config_file_content = file_get_contents(DRUPAL_ROOT . '/' . $settings_config_file->uri);
-        $settings_config_file_data = (array) Yaml::parse($settings_config_file_content);
-        $config_factory = \Drupal::configFactory()->getEditable($settings_config_file->name);
-        $config_factory->setData($settings_config_file_data)->save(TRUE);
-      }
-    }
-  }
-  // ---------------------------------------------------------------------------
-
   // Restrict user registration to admin role creation.
-  \Drupal::configFactory()->getEditable('user.settings')->set('register', UserInterface::REGISTER_ADMINISTRATORS_ONLY)->save(TRUE);
+  \Drupal::configFactory()
+    ->getEditable('user.settings')
+    ->set('register', UserInterface::REGISTER_ADMINISTRATORS_ONLY)
+    ->save(TRUE);
 
-  // We install some menu links, so we have to rebuild the router, to ensure the
-  // menu links are valid.
-  \Drupal::service('router.builder')->rebuildIfNeeded();
-
-  // Enable the admin theme.
-  \Drupal::configFactory()->getEditable('node.settings')->set('use_admin_theme', TRUE)->save(TRUE);
-
-  // If the openapi_ui_redoc module is installed, give the API
-  // documentation a nice path alias.
-  if (Drupal::service('module_handler')->moduleExists('openapi_ui_redoc')) {
-    $route_parameters = [
-      'openapi_ui' => 'redoc',
-      'openapi_generator' => 'jsonapi',
-    ];
-    $path_alias = \Drupal::entityTypeManager()->getStorage('path_alias')->create([
-      'path' => '/admin/config/services/openapi/redoc/jsonapi',
-      'alias' => '/api-docs',
-      'langcode' => LanguageInterface::LANGCODE_NOT_SPECIFIED,
-    ]);
-    $path_alias->save();
-  }
-
-  // If the openapi_ui_swagger module is installed, give the API
-  // documentation a nice path alias.
-  if (Drupal::service('module_handler')->moduleExists('openapi_ui_swagger')) {
-    $route_parameters = [
-      'openapi_ui' => 'redoc',
-      'openapi_generator' => 'swagger',
-    ];
-    $path_alias = \Drupal::entityTypeManager()->getStorage('path_alias')->create([
-      'path' => '/admin/config/services/openapi/swagger/jsonapi',
-      'alias' => '/openapi-docs',
-      'langcode' => LanguageInterface::LANGCODE_NOT_SPECIFIED,
-    ]);
-    $path_alias->save();
-  }
-
-  // Entity updates to clear up any mismatched entity and/or field definitions
-  // And Fix changes were detected in the entity type and field definitions.
-  \Drupal::classResolver()
-    ->getInstanceFromDefinition(EntityDefinitionUpdateManager::class)
-    ->applyUpdates();
+  // Use the admin theme when editing content, front end and back end alike.
+  \Drupal::configFactory()
+    ->getEditable('node.settings')
+    ->set('use_admin_theme', TRUE)
+    ->save(TRUE);
 
   // Rebuild the router, to ensure the menu links are valid.
   \Drupal::service('router.builder')->rebuildIfNeeded();
