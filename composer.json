@@ -29,6 +29,10 @@
     "drush/drush": "^13 || ^14",
     "oomphinc/composer-installers-extender": "~2"
   },
+  "require-dev": {
+    "drupal/webapi_starter": "2.0.x-dev",
+    "vardot/swagger-ui": "^5.32"
+  },
   "config": {
     "bin-dir": "bin/",
     "secure-http": false,

@@ -1,8 +1,9 @@
 ################
 # GitLab CI for the Webships installer profile.
 #
-# The profile has no front-end build, so only the drupalci jobs run: composer,
-# phpcs, phpstan and the test jobs.
+# The drupalci jobs (composer, phpcs, phpstan and the test jobs), the lint jobs,
+# and a webship-js browser suite that installs the profile with the WebAPI
+# Starter site template.
 # Documentation: https://project.pages.drupalcode.org/gitlab_templates/
 ################
 include:
@@ -14,16 +15,35 @@ include:
       - "/includes/include.drupalci.workflows.yml"
 
 variables:
-  # For now, build and test with Drupal 11.4 and PHP 8.4.
-  DRUPAL_CORE: "11.4.x-dev"
+  # The default build is Drupal 11.4 on PHP 8.4. The core version is set on the
+  # composer job below: the template sets DRUPAL_CORE on the job itself, which
+  # wins over a global value.
   _TARGET_PHP: "8.4"
   COMPOSER_FLAGS: "--no-strict-lock"
   COMPOSER_MEMORY_LIMIT: "-1"
+  # Drupal 12 and PHP 8.5 are declared, but the site templates depend on
+  # contributed modules with no Drupal 12 release yet. Opt in from the "Run
+  # pipeline" form with OPT_IN_TEST_NEXT_MAJOR=1 (Drupal 12 on PHP 8.5) or
+  # OPT_IN_TEST_MAX_PHP=1 (Drupal 11.4 on PHP 8.5). Those jobs may fail.
 
 # Override the default composer job to use development versions.
 composer:
   variables:
+    DRUPAL_CORE: "11.4.x-dev"
     IGNORE_PROJECT_DRUPAL_CORE_VERSION: 0
+
+# The opt-in variants never block the pipeline.
+composer (next major):
+  allow_failure: true
+
+composer (max PHP version):
+  allow_failure: true
+
+phpstan (next major):
+  allow_failure: true
+
+phpstan (max PHP version):
+  allow_failure: true
 
 cspell:
   stage: validate
@@ -33,3 +53,136 @@ cspell:
   script:
     - cspell "**/*.{php,module,inc,install,test,profile,theme,js,css,md,yml,txt}" --no-progress || true
   allow_failure: true
+
+# Shared setup for the fast lint jobs (eslint, stylelint).
+#
+#   1. `dependencies: []`: the lint jobs do NOT need the composer job's build
+#      artifact (the full Drupal tree), so they skip downloading it.
+#   2. package.json keeps webship-js as its only devDependency, so the lint
+#      jobs install their own toolchain with npm in a separate folder and link
+#      its node_modules into the project. ESLint resolves its shareable configs
+#      and plugins from there. No yarn install, so no Playwright download.
+# The paired .eslintignore excludes vendor/, .yarn/, web/ and node_modules/ so
+# `eslint .` only lints the profile's own source.
+.lint-node:
+  image: node:20
+  dependencies: []
+  variables:
+    LINT_TOOLS_DIR: /tmp/lint-tools
+  before_script:
+    - mkdir -p $LINT_TOOLS_DIR
+    - npm install --prefix $LINT_TOOLS_DIR --no-save --no-package-lock --no-audit --no-fund $LINT_PACKAGES
+    - ln -s $LINT_TOOLS_DIR/node_modules node_modules
+
+eslint:
+  extends: .lint-node
+  stage: validate
+  variables:
+    LINT_PACKAGES: >-
+      eslint@8 eslint-config-airbnb-base@15 eslint-config-prettier@8
+      eslint-plugin-import@2 eslint-plugin-prettier@4 eslint-plugin-yml@1
+      prettier@2
+  script:
+    - ./node_modules/.bin/eslint .
+    - ./node_modules/.bin/eslint --ext .yml .
+  after_script:
+    - touch junit.xml _eslint.patch
+  allow_failure: false
+
+stylelint:
+  extends: .lint-node
+  stage: validate
+  variables:
+    LINT_PACKAGES: stylelint@15 stylelint-config-standard@33
+  script:
+    - ./node_modules/.bin/stylelint "**/*.css" || true
+  after_script:
+    - echo '[]' > gl-codequality.json
+  allow_failure: true
+
+# Shared Drupal + Node.js setup for browser tests.
+#
+# How it works:
+#   1. The drupalci `composer` job builds a full Drupal site: the profile, and
+#      its require-dev, which brings the WebAPI Starter site template into
+#      recipes/ and the Swagger UI library into web/libraries/swagger-ui. The
+#      artifact reaches this job via `needs: [composer]`.
+#   2. This job runs inside the drupalci PHP-Apache image (inherited from
+#      `.testing-job-base`) which already has PHP, Apache, Drush, and MySQL.
+#   3. before_script installs Drupal with the Webships installer, choosing the
+#      WebAPI Starter site template, then Node.js + yarn deps + Playwright
+#      Chromium. Test jobs only override `script:`.
+#   4. Per-role test users are provisioned by the first suite scenario, so
+#      drush only installs Drupal with the Webmaster super-admin account.
+# ------------------------------------------------------------------------------
+.drupal-node-base:
+  extends: .testing-job-base
+  needs: [composer]
+  # Override the parent's services. We only need the database. Playwright
+  # bundles its own Chromium, so Selenium and chromedriver are not needed.
+  services:
+    - name: $_CONFIG_DOCKERHUB_ROOT/$_TARGET_DB_TYPE-$_TARGET_DB_VERSION:$_TARGET_DB_IMAGE_TAG
+      alias: database
+  variables:
+    # composer.json sets bin-dir to bin/, so drush is not under vendor/bin.
+    DRUSH_BIN: "bin/drush"
+    DRUPAL_ADMIN_USERNAME: "webmaster"
+    DRUPAL_ADMIN_PASSWORD: "dD.123123ddd"
+    DRUPAL_TEST_BASE_URL: "http://localhost"
+    LAUNCH_URL: "http://localhost"
+    FORCE_COLOR: "1"
+  before_script:
+    # Web server.
+    - mkdir -pv $CI_PROJECT_DIR/$_WEB_ROOT/sites/default/files
+    - mkdir -pv $CI_PROJECT_DIR/$_WEB_ROOT/sites/simpletest
+    - chmod -R 777 $CI_PROJECT_DIR/$_WEB_ROOT/sites/default/files
+    - chmod -R 777 $CI_PROJECT_DIR/$_WEB_ROOT/sites/simpletest
+    - rm -rf /var/www/html && ln -s $CI_PROJECT_DIR/$_WEB_ROOT /var/www/html
+    - chown -R www-data:www-data $CI_PROJECT_DIR
+    - service apache2 start
+    # Database.
+    - export SIMPLETEST_DB=mysql://$MYSQL_USER:$MYSQL_PASSWORD@database/$MYSQL_DATABASE
+    # Drupal site install with the Webships installer. The template step is
+    # answered through its form ID, as a non-interactive install does.
+    - $CI_PROJECT_DIR/$DRUSH_BIN --root=$CI_PROJECT_DIR/$_WEB_ROOT site:install webships
+        installer_site_template_form.add_ons=webapi_starter
+        --db-url=$SIMPLETEST_DB
+        --account-name=webmaster
+        --account-pass=dD.123123ddd
+        --site-name="Webships Test"
+        -y
+    - $CI_PROJECT_DIR/$DRUSH_BIN --root=$CI_PROJECT_DIR/$_WEB_ROOT cache:rebuild
+    # Per-role test users are provisioned by the first scenario in the suite
+    # (01-01-01-users-login.feature, "Webmaster can log in and provision the
+    # rest of the testing users"), so no separate drush step is needed here.
+    # Node.js 20.
+    - curl -fsSL https://deb.nodesource.com/setup_20.x | bash -
+    - apt-get install -y nodejs
+    - node --version && npm --version
+    # Yarn deps + Playwright Chromium.
+    # Force node_modules layout so node_modules/.bin/* is populated.
+    - 'test -f .yarnrc.yml || echo "nodeLinker: node-modules" > .yarnrc.yml'
+    # Back up cucumber.js. webship-js's postinstall can clobber it under yarn 4
+    # because INIT_CWD may differ from our project root inside the container.
+    - cp cucumber.js .cucumber.js.bak
+    - corepack enable
+    - yarn install
+    # Restore cucumber.js if postinstall overwrote it with the init-webship template.
+    - cp .cucumber.js.bak cucumber.js && rm .cucumber.js.bak
+    - ./node_modules/.bin/playwright install --with-deps chromium
+
+# webship-js BDD functional tests.
+webship-js-test:
+  extends: .drupal-node-base
+  script:
+    - ./node_modules/.bin/cucumber-js --config cucumber.js --tags "not @wip"
+  artifacts:
+    when: always
+    paths:
+      - tests/reports/
+      - tests/screenshots/
+      - tests/videos/
+    expire_in: 7 days
+    reports:
+      junit: tests/reports/junit.xml
+  allow_failure: false

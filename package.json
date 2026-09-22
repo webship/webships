@@ -1,0 +1,30 @@
+{
+  "name": "webships",
+  "private": true,
+  "description": "The Webships installer: choose an API site template built with recipes.",
+  "license": "GPL-2.0-or-later",
+  "engines": {
+    "yarn": ">= 4.9.3",
+    "node": ">= 20.0"
+  },
+  "packageManager": "yarn@4.9.3",
+  "keywords": [
+    "Drupal",
+    "Webships",
+    "Installer",
+    "Site template",
+    "JSON:API"
+  ],
+  "author": "Webship.co",
+  "scripts": {
+    "test": "cucumber-js --config cucumber.js",
+    "test:headed": "HEADLESS=false cucumber-js --config cucumber.js",
+    "test:chromium": "BROWSER=chromium cucumber-js --config cucumber.js"
+  },
+  "devDependencies": {
+    "webship-js": "~2.0"
+  },
+  "resolutions": {
+    "@cucumber/cucumber": "10.0.1"
+  }
+}
