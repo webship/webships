@@ -148,6 +148,7 @@ final class SiteTemplateForm extends FormBase {
     return $local + array_map(
       fn (array $values): SiteTemplate => new SiteTemplate(
         name: $values['name'],
+        path: $values['path'] ?? NULL,
         package: $values['package'] ?? '',
         description: $values['description'] ?? NULL,
         links: $values['links'] ?? [],

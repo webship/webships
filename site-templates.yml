@@ -12,6 +12,8 @@
 #   name: Human readable name of the template
 #   description: A brief description of the template
 #   package: The name of the package that provides this template
+#   path: (sites/default/site-templates.php only) the absolute path of a local
+#     recipe directory, used instead of a package
 #   links: A list of links related to the template, each with "text" and "url"
 #   creator: The name of the site template's creator (or organization)
 #
