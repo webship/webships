@@ -65,20 +65,7 @@ final class SiteTemplateForm extends FormBase {
    */
   public function buildForm(array $form, FormStateInterface $form_state, ?array $install_state = NULL): array {
     // @see \Drupal\webships\Installer\InstallTasks::chooseTemplate()
-    $all_choices = $install_state['recipes'] ?? [];
-
-    // Load the curated choices. Any site template already in the code base
-    // wins over the curated entry of the same name.
-    $all_choices += array_map(
-      fn (array $values): SiteTemplate => new SiteTemplate(
-        name: $values['name'],
-        package: $values['package'] ?? '',
-        description: $values['description'] ?? NULL,
-        links: $values['links'] ?? [],
-        creator: $values['creator'] ?? NULL,
-      ),
-      $this->getCuratedList(),
-    );
+    $all_choices = $install_state['site_templates'] ?? $this->getChoices($install_state['recipes'] ?? []);
 
     // Must be called `add_ons` to agree with the form ID above. In the
     // interactive installer nothing is preselected: the user chooses.
@@ -145,6 +132,29 @@ final class SiteTemplateForm extends FormBase {
     $this->recipeHandler->enqueue($form['add_ons'][$choice]['#locator']);
     // Mark the task as finished.
     $GLOBALS['install_state']['parameters'][self::TASK_ID] = INSTALL_TASK_SKIP;
+  }
+
+  /**
+   * Returns every site template the installer can offer.
+   *
+   * @param array<string, \Drupal\webships\SiteTemplate> $local
+   *   The site templates already in the code base, keyed by machine name.
+   *
+   * @return array<string, \Drupal\webships\SiteTemplate>
+   *   The local site templates, then the curated ones. A site template already
+   *   in the code base wins over the curated entry of the same name.
+   */
+  public function getChoices(array $local): array {
+    return $local + array_map(
+      fn (array $values): SiteTemplate => new SiteTemplate(
+        name: $values['name'],
+        package: $values['package'] ?? '',
+        description: $values['description'] ?? NULL,
+        links: $values['links'] ?? [],
+        creator: $values['creator'] ?? NULL,
+      ),
+      iterator_to_array($this->getCuratedList()),
+    );
   }
 
   /**
