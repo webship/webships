@@ -25,12 +25,6 @@ function webships_install() {
     ->set('register', UserInterface::REGISTER_ADMINISTRATORS_ONLY)
     ->save(TRUE);
 
-  // Use the admin theme when editing content, front end and back end alike.
-  \Drupal::configFactory()
-    ->getEditable('node.settings')
-    ->set('use_admin_theme', TRUE)
-    ->save(TRUE);
-
   // Rebuild the router, to ensure the menu links are valid.
   \Drupal::service('router.builder')->rebuildIfNeeded();
 
