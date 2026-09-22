@@ -8,7 +8,11 @@ package: Webships
 distribution:
   name: Webships
   install:
-    theme: default_admin
+    # The installer pages use Claro, like the core installer. Default Admin
+    # preloads its font from a path under /core/install.php/, which boots a
+    # regular Drupal kernel in the middle of the install and leaves stale
+    # configuration and container caches behind.
+    theme: claro
 
 # Explicitly provide an empty list of themes -- this prevents the installer from
 # injecting Stark into it.
