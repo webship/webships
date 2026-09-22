@@ -57,21 +57,26 @@ final class InstallTasks {
       ->enqueue('core/recipes/administrator_role')
       ->scan('Site');
 
-    // Put the discovered recipes into $install_state because we have no other
-    // way to pass them to the form.
-    $install_state['recipes'] = array_map(
-      SiteTemplate::createFromRecipe(...),
-      iterator_to_array($recipes),
-    );
+    // Every site template on offer: the ones in the code base, then the
+    // curated ones. Put them into $install_state because we have no other way
+    // to pass them to the form.
+    $install_state['site_templates'] = \Drupal::classResolver(SiteTemplateForm::class)
+      ->getChoices(array_map(
+        SiteTemplate::createFromRecipe(...),
+        iterator_to_array($recipes),
+      ));
 
     $was_interactive = $install_state['interactive'];
-    // If there's only one recipe, submit the form programmatically.
-    if (count($install_state['recipes']) === 1) {
+    // If there's only one site template on offer, local or curated, submit the
+    // form programmatically. Counting only the local ones would skip the
+    // question, and pick the default curated one, whenever exactly one site
+    // template is in the code base.
+    if (count($install_state['site_templates']) === 1) {
       $install_state['interactive'] = FALSE;
     }
     $return = install_get_form(SiteTemplateForm::class, $install_state);
     $install_state['interactive'] = $was_interactive;
-    unset($install_state['recipes']);
+    unset($install_state['site_templates']);
 
     return $return;
   }
