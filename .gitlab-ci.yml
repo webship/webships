@@ -124,6 +124,8 @@ stylelint:
     - name: $_CONFIG_DOCKERHUB_ROOT/$_TARGET_DB_TYPE-$_TARGET_DB_VERSION:$_TARGET_DB_IMAGE_TAG
       alias: database
   variables:
+    # composer.json sets bin-dir to bin/, so drush is not under vendor/bin.
+    DRUSH_BIN: "bin/drush"
     DRUPAL_ADMIN_USERNAME: "webmaster"
     DRUPAL_ADMIN_PASSWORD: "dD.123123ddd"
     DRUPAL_TEST_BASE_URL: "http://localhost"
@@ -142,14 +144,14 @@ stylelint:
     - export SIMPLETEST_DB=mysql://$MYSQL_USER:$MYSQL_PASSWORD@database/$MYSQL_DATABASE
     # Drupal site install with the Webships installer. The template step is
     # answered through its form ID, as a non-interactive install does.
-    - $CI_PROJECT_DIR/vendor/bin/drush --root=$CI_PROJECT_DIR/$_WEB_ROOT site:install webships
+    - $CI_PROJECT_DIR/$DRUSH_BIN --root=$CI_PROJECT_DIR/$_WEB_ROOT site:install webships
         installer_site_template_form.add_ons=webapi_starter
         --db-url=$SIMPLETEST_DB
         --account-name=webmaster
         --account-pass=dD.123123ddd
         --site-name="Webships Test"
         -y
-    - $CI_PROJECT_DIR/vendor/bin/drush --root=$CI_PROJECT_DIR/$_WEB_ROOT cache:rebuild
+    - $CI_PROJECT_DIR/$DRUSH_BIN --root=$CI_PROJECT_DIR/$_WEB_ROOT cache:rebuild
     # Per-role test users are provisioned by the first scenario in the suite
     # (01-01-01-users-login.feature, "Webmaster can log in and provision the
     # rest of the testing users"), so no separate drush step is needed here.
