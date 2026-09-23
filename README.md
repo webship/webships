@@ -52,19 +52,32 @@ Start from the
 template. It requires this profile and both site templates, so nothing
 is downloaded during the install:
 
-```
+```shell
 mkdir myapi && cd myapi
-ddev config --project-type=drupal11 --docroot=web
-ddev composer create-project drupal/webships_project
+ddev config --project-type=drupal --docroot=web
 ddev start
+ddev composer create-project drupal/webships_project:^1.0
+ddev restart
+ddev launch
 ```
 
-On an existing Composer project, require the profile. Its recipes
+Composer, PHP, Drush and the database all run inside
+[DDEV](https://ddev.readthedocs.io/en/stable/users/install/ddev-installation/),
+so nothing is needed on your machine but DDEV itself. `ddev restart` picks up
+the `.ddev/config.yaml` the template ships, which replaces the one `ddev
+config` wrote. The site is at `https://<directory>.ddev.site`.
+
+On an existing DDEV project, require the profile and install it. Its recipes
 directory comes from the `type:drupal-recipe` installer path:
 
+```shell
+ddev composer require webship/webships:~3.0
+ddev drush site:install webships --account-name=webmaster -y
 ```
-composer require webship/webships
-```
+
+Without DDEV, the same two commands are `composer require webship/webships:~3.0`
+and `vendor/bin/drush site:install webships -y`, against a PHP 8.4 and
+MySQL/MariaDB stack of your own.
 
 
 ## Configuration
